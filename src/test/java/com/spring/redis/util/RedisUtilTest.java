@@ -22,7 +22,7 @@ public class RedisUtilTest {
 	@Test
 	public void testExpire() {
 		boolean flag = this.redisUtil.exists("aaa");
-		System.out.println("=======redis의 "aaa"키가 있습니까? " + flag);
+		System.out.println("=======redis의 aaa 키가 있습니까? " + flag);
 	}
 
 	@Test

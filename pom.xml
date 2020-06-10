@@ -80,6 +80,7 @@
 					<path>/</path>
 				</configuration>
 			</plugin>
+			<!-- mvn package 빌드 옵션 추가 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

@@ -2,6 +2,8 @@ package com.spring.redis.controller;
 
 import java.util.HashMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,29 +16,31 @@ import com.spring.redis.util.RedisUtil;
 @Controller
 @RequestMapping("/")
 public class RedisController {
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private RedisUtil redisUtil;
 
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	@ResponseBody
 	public String add() {
-		System.out.println("====================add====================");
+		logger.debug("====================add====================");
 		this.redisUtil.set("aaa", "aaa");
-		System.out.println("====================add====================");
+		logger.debug("====================add====================");
 		return "hello world";
 	}
 
 	@RequestMapping(value = "get", method = RequestMethod.GET)
 	@ResponseBody
 	public String get() {
-		System.out.println("====================get====================");
+		logger.debug("====================get====================");
 		return String.valueOf(this.redisUtil.get("aaa"));
 	}
 
 	@RequestMapping(value = "addHash", method = RequestMethod.GET)
 	@ResponseBody
 	public String addHash() {
-		System.out.println("====================addHash====================");
+		logger.debug("====================addHash====================");
 		User u = new User();
 		u.setAge(11);
 		u.setId(1L);
@@ -46,16 +50,16 @@ public class RedisController {
 		HashMap<String, User> map = new HashMap<String, User>();
 		map.put("user", u);
 		this.redisUtil.setHash("mmm", "nnn", map);
-		System.out.println("====================addHash====================");
+		logger.debug("====================addHash====================");
 		return "hello world";
 	}
 
 	@RequestMapping(value = "getHash", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, User> getHash() {
-		System.out.println("====================getHash====================");
+		logger.debug("====================getHash====================");
 		User user = (User) this.redisUtil.getHash("mmm", "bbb:ccc");
-		System.out.println("====================getHash====================" + user);
+		logger.debug("====================getHash====================" + user);
 		return (HashMap<String, User>) this.redisUtil.getHash("mmm", "nnn");
 	}
 
