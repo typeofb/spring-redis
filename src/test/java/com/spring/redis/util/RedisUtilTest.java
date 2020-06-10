@@ -1,4 +1,5 @@
-/*package com.spring.redis.util;
+/*
+package com.spring.redis.util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,29 +19,28 @@ public class RedisUtilTest {
 		//TODO
 	}
 
-
 	@Test
 	public void testExpire() {
 		boolean flag = this.redisUtil.exists("aaa");
-		System.out.println("=======从redis中是否存在键为“aaa”的：" + flag);
+		System.out.println("=======redis의 "aaa"키가 있습니까? " + flag);
 	}
 
 	@Test
 	public void testGet() {
 		String data = String.valueOf(this.redisUtil.get("aaa"));
-		System.out.println("=======从redis中获得到的：" + data);
+		System.out.println("=======redis에서 획득: " + data);
 	}
 
 	@Test
 	public void testSetStringObject() {
 		this.redisUtil.set("aaa", "test_value");
-		System.out.println("=======从redis设置aaa");
+		System.out.println("=======redis에서 aaa 설정");
 	}
 
 	@Test
 	public void testDelete() {
 		this.redisUtil.delete("aaa");
-		System.out.println("=======从redis中删除aaa");
+		System.out.println("=======redis에서 aaa 제거");
 	}
 
 }

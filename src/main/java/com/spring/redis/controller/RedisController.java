@@ -20,42 +20,42 @@ public class RedisController {
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	@ResponseBody
 	public String add() {
-		System.out.println("================华丽进=======================");
+		System.out.println("====================add====================");
 		this.redisUtil.set("aaa", "aaa");
-		System.out.println("================华丽出=======================");
+		System.out.println("====================add====================");
 		return "hello world";
 	}
 
 	@RequestMapping(value = "get", method = RequestMethod.GET)
 	@ResponseBody
 	public String get() {
-		System.out.println("================获取redis中数据=======================");
+		System.out.println("====================get====================");
 		return String.valueOf(this.redisUtil.get("aaa"));
 	}
 
 	@RequestMapping(value = "addHash", method = RequestMethod.GET)
 	@ResponseBody
 	public String addHash() {
-		System.out.println("================华丽进===addHash====================");
+		System.out.println("====================addHash====================");
 		User u = new User();
 		u.setAge(11);
 		u.setId(1L);
-		u.setName("李四");
-		// 存储hash结构的数据，可以是HashMap
+		u.setName("wyait");
 		this.redisUtil.setHash("mmm", "bbb:ccc", u);
+
 		HashMap<String, User> map = new HashMap<String, User>();
 		map.put("user", u);
 		this.redisUtil.setHash("mmm", "nnn", map);
-		System.out.println("================华丽出====addHash===================");
+		System.out.println("====================addHash====================");
 		return "hello world";
 	}
 
 	@RequestMapping(value = "getHash", method = RequestMethod.GET)
 	@ResponseBody
 	public HashMap<String, User> getHash() {
-		System.out.println("================获取redis中数据========getHash===============");
+		System.out.println("====================getHash====================");
 		User user = (User) this.redisUtil.getHash("mmm", "bbb:ccc");
-		System.out.println("================获取redis中数据========getHash===============" + user);
+		System.out.println("====================getHash====================" + user);
 		return (HashMap<String, User>) this.redisUtil.getHash("mmm", "nnn");
 	}
 

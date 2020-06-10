@@ -4,20 +4,19 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!--配置service的包扫描，自动注入Service-->
-	<context:component-scan base-package="com.spring"/>
+	<!-- 서비스 패키지 스캔 구성 및 서비스 자동 주입 -->
+	<context:component-scan base-package="com.spring" />
 
-	<!-- 使用spring自带的占位符替换功能 -->
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<!-- 允许JVM参数覆盖 -->
+	<!-- 외부 설정 프로퍼티 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- JVM 매개 변수 대체 허용 -->
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
-		<!-- 忽略没有找到的资源文件 -->
+		<!-- 찾을 수 없는 리소스 파일 무시 -->
 		<property name="ignoreResourceNotFound" value="true" />
-		<!-- 配置资源文件 -->
+		<!-- 리소스 파일 구성 -->
 		<property name="locations">
 			<list>
 				<value>classpath:log4j.properties</value>
